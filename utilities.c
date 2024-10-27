@@ -1,4 +1,8 @@
 #include "utilities.h"
+#include <string.h>
+#include <stdlib.h>
+#include <errno.h> 
+#include <time.h>
 
 int checkForNonStdDigits(char string[]){
     for(int i = 0; i < strlen(string); i++){
