@@ -1,8 +1,13 @@
 #include "menu.h"
+#include "player.h"
 #include "utilities.h"
 #include <string.h>
 #include <stdio.h>
 
+//Criando o array pra armazenar todos os players
+Player players[10];
+
+//Função para iniciar o jogo
 void play(){
     clearTerminal();
     //Pegando infos
@@ -41,19 +46,23 @@ void play(){
     case '1':
         printf("Voce escolheu Guerreiro, seus status e itens sao: \n\n");
         printf("Vida: 30   Esquiva: 25    \n");
-        printf("Itens: 2x Pocao de Vida;  \n");
-        printf("       2x Pocao de Forca; \n");
-        printf("Armas: Espada;            \n");
-        printf("       Martelo            \n");
+        printf("Itens: 4x Pocao de Vida;  \n");
+        printf("Armas: Espada             \n");
+
+        //Inicializando player novo
+        players[0] = criarPlayer("warrior", name);
         sleep(10000);
         break;
     case '2':
         printf("Voce escolheu Mago, seus status e itens sao: \n\n");
-        printf("Vida: 15   Esquiva: 50    \n");
+        printf("Vida: 15   Esquiva: 50   Mana: 10\n");
         printf("Itens:  4x Pocao de Vida; \n");
         printf("        4x Pocao de Mana; \n");
         printf("Armas:  Cajado;           \n");
         printf("Magias: Bola de Fogo      \n");
+
+        //Inicializando player novo
+        players[0] = criarPlayer("mage", name);
         sleep(10000);
         break;
     default:
@@ -62,6 +71,7 @@ void play(){
     }  
 }
 
+//Função para o menu inicial
 void menu(){
     //Título
     clearTerminal();
