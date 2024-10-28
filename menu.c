@@ -1,24 +1,27 @@
 #include "menu.h"
-#include "player.h"
+#include "character.h"
 #include "utilities.h"
+#include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
 
-//Criando o array pra armazenar todos os players
-Player players[10];
-
 //Função para iniciar o jogo
-void play(){
+void play(Character characters[], int *pQtdCharacters, int *pActualCharacter){
     clearTerminal();
     //Pegando infos
-    printf("Digite seu nome: ");
-    char name[50];
-    fgets(name, 50, stdin);
-    name[strlen(name)-1] = '\0';
+    printf("Digite o nome do seu personagem: ");
+    char characterName[50];
+    fgets(characterName, 50, stdin);
+    characterName[strlen(characterName)-1] = '\0';
+
+    if(strlen(characterName) == 0){ 
+        printf("Digito Invalido");
+        sleep(2000);
+        return;
+    }
 
     //Seleção de personagem
-    printf("Muito bem %s!!! Agora selecione a sua classe (Digite o numero correspondente): \n\n", name);
-
+    printf("Muito bem %s!!! Agora selecione a sua classe (Digite o numero correspondente): \n\n", characterName);
     printf("       /|               \n");
     printf("      | |               \n");
     printf("      | |               \n");
@@ -29,19 +32,19 @@ void play(){
     printf("1.GUERREIRO    2.MAGO   \n\n");
 
     printf("Selecione uma opcao: ");
-    char class[10];
-    fgets(class, 10, stdin);
-    class[strlen(class)-1] = '\0';
-
+    char characterClass[10];
+    fgets(characterClass, 10, stdin);
+    characterClass[strlen(characterClass)-1] = '\0';
+    
     //Checando opção para dígitos inválidos
-    if(checkForLetters(class) || checkForNonStdDigits(class) || strlen(class) > 1){
+    if(checkForLetters(characterClass) || checkForNonStdDigits(characterClass) || strlen(characterClass) > 1){
         printf("Digito Invalido \n");
         sleep(2000);
         return;
     }
 
     //Checando opção escolhida
-    switch(class[0])
+    switch(characterClass[0])
     {
     case '1':
         printf("Voce escolheu Guerreiro, seus status e itens sao: \n\n");
@@ -50,8 +53,18 @@ void play(){
         printf("Armas: Espada             \n");
 
         //Inicializando player novo
-        players[0] = criarPlayer("warrior", name);
-        sleep(10000);
+        if(*pQtdCharacters >= 10){
+            printf("Quantidade maxima de saves atingida");
+            sleep(2000);
+            return;
+        }
+
+        characters[*pQtdCharacters] = criarCharacter("warrior", characterName);
+        *pQtdCharacters += 1;
+        *pActualCharacter = *pQtdCharacters;
+        characterArrayToTxt(characters, pQtdCharacters);
+        sleep(2000);
+
         break;
     case '2':
         printf("Voce escolheu Mago, seus status e itens sao: \n\n");
@@ -62,17 +75,22 @@ void play(){
         printf("Magias: Bola de Fogo      \n");
 
         //Inicializando player novo
-        players[0] = criarPlayer("mage", name);
-        sleep(10000);
+        characters[*pQtdCharacters] = criarCharacter("mage", characterName);
+        *pQtdCharacters += 1;
+        *pActualCharacter = *pQtdCharacters;
+        characterArrayToTxt(characters, pQtdCharacters);
+        sleep(2000);
+
         break;
     default:
         printf("Digito Invalido \n");
+        sleep(2000);
         break;
     }  
 }
 
 //Função para o menu inicial
-void menu(){
+void menu(bool *pGoToPlay){
     //Título
     clearTerminal();
     printf("\n");
@@ -104,7 +122,8 @@ void menu(){
     switch(option[0])
     {
     case '1':
-        play();
+        *pGoToPlay = true;
+        return;
         break;
     default:
         printf("Digito Invalido \n");
