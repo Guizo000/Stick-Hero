@@ -4,6 +4,10 @@
 #include <errno.h> 
 #include <time.h>
 
+void clearTerminal(){
+    system("cls");
+}
+
 int checkForNonStdDigits(char string[]){
     for(int i = 0; i < strlen(string); i++){
         if((string[i] >= 32 && string[i] <= 47) || (string[i] >= 58 && string[i] <= 64) || (string[i] >= 91 && string[i] <= 96) || (string[i] >= 123 && string[i] <= 127)){
@@ -29,10 +33,6 @@ int checkForNumbers(char string[]){
         }
     }
     return 0;
-}
-
-void clearTerminal(){
-    system("cls");
 }
 
 int sleep(long msec){
