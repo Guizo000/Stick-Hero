@@ -1,29 +1,36 @@
 #include "character.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 //Função para criar um personagem
 Character criarCharacter(char characterClass[], char name[]){
     Character character;
-    if(strcmp(characterClass, "mage")){
+    if(strcmp(characterClass, "warrior") == 0){
         character = (Character) {
             .weaponEquipped = "sword",
-            .weapons[0] = "sword",
-            .itens = {{"healingPotion"}, {"healingPotion"}, {"healingPotion"}, {"healingPotion"},},
-            .dodge = 25,
+            .charClass = "warrior",
+            .bonusDamage = 0,
+            .dodgeMultiplier = 1,
+            .undodgeableAttack = false,
+            .battle = 1,
+            .money = 0,
+            .dodge = 20,
             .life = 30,
-            .mana = 0
+            .maxLife = 30
         };
-    }else if(strcmp(characterClass, "warrior")){
+    }else if(strcmp(characterClass, "mage") == 0){
         character = (Character) {
             .weaponEquipped = "staff",
-            .spellEquipped = "fireBall",
-            .weapons[0] = "staff",
-            .spells[0] = "fireBall",
-            .itens = {{"healingPotion"}, {"healingPotion"}, {"healingPotion"}, {"healingPotion"}, {"manaPotion"}, {"manaPotion"}, {"manaPotion"}, {"manaPotion"}},
-            .dodge = 50,
+            .charClass = "mage",
+            .bonusDamage = 0,
+            .dodgeMultiplier = 1,
+            .undodgeableAttack = false,
+            .battle = 1,
+            .money = 0,
+            .dodge = 15,
             .life = 15,
-            .mana = 10
+            .maxLife = 15
         };
     }
 

@@ -5,7 +5,7 @@
 #include <time.h>
 
 void clearTerminal(){
-    system("cls");
+    system("clear");
 }
 
 int checkForNonStdDigits(char string[]){
