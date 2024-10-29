@@ -15,21 +15,22 @@ Character criarCharacter(char characterClass[], char name[]){
             .undodgeableAttack = false,
             .battle = 1,
             .money = 0,
-            .dodge = 25,
+            .dodge = 20,
             .life = 30,
+            .maxLife = 30
         };
     }else if(strcmp(characterClass, "mage") == 0){
         character = (Character) {
             .weaponEquipped = "staff",
             .charClass = "mage",
-
             .bonusDamage = 0,
             .dodgeMultiplier = 1,
             .undodgeableAttack = false,
             .battle = 1,
-            .money = 30,
-            .dodge = 20,
+            .money = 0,
+            .dodge = 15,
             .life = 15,
+            .maxLife = 15
         };
     }
 

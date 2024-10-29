@@ -31,7 +31,7 @@ int main(){
         menu(pGoToPlay);
         if(goToPlay){ play(listaCharacters.characters, pQtdCharacters, pActualCharacter, pGoToGame); }
         listaCharacters = txtToCharacterArray(listaCharacters, sizeof(listaCharacters.characters)/sizeof(listaCharacters.characters[0]));
-        if(goToGame){ game(listaCharacters.characters, listaCharacters.actualCharacter); }
+        if(goToGame){ game(listaCharacters.characters, listaCharacters.actualCharacter, pQtdCharacters); }
         listaCharacters = txtToCharacterArray(listaCharacters, sizeof(listaCharacters.characters)/sizeof(listaCharacters.characters[0]));
     } 
     return 0;

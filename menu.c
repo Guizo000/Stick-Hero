@@ -89,7 +89,7 @@ void play(Character characters[], int *pQtdCharacters, int *pActualCharacter, bo
         {
         case '1':
             printf("Voce escolheu Guerreiro, seus status e itens sao: \n\n");
-            printf("Vida: 30   Esquiva: 25    \n");
+            printf("Vida: 30   Esquiva: 20    \n");
             printf("Armas: Espada - Dano: 7   \n");
             printf("Pecas de Ouro: 0         \n");
 
@@ -111,10 +111,10 @@ void play(Character characters[], int *pQtdCharacters, int *pActualCharacter, bo
             break;
         case '2':
             printf("Voce escolheu Mago, seus status e itens sao: \n\n");
-            printf("Vida: 15   Esquiva: 20       \n");
+            printf("Vida: 15   Esquiva: 15       \n");
             printf("Armas: Cajado;               \n");
             printf("Magia: Bola de Fogo - Dano: 12\n");
-            printf("Pecas de Ouro: 30            \n");
+            printf("Pecas de Ouro: 0            \n");
 
             //Inicializando player novo
             characters[*pQtdCharacters] = criarCharacter("mage", characterName);
@@ -215,7 +215,7 @@ void menu(bool *pGoToPlay){
         printf("e caso voce consiga desviar, seu proximo golpe sera indisviavel\n");
         printf("Alem disso entre as batalhas, voce podera escolher um upgrade pro seu personagem\n");
         printf("O Jogo salva seu progresso entre batalhas\n");
-        sleep(10000);
+        sleep(15000);
         break;
     default:
         printf("Digito Invalido \n");

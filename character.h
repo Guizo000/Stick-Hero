@@ -13,6 +13,7 @@ struct{
     int money;
     int dodge;
     int life;
+    int maxLife;
 }typedef Character;
 
 //Lista de characters
